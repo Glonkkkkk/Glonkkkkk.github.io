@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"glonkkkkk.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。 Hypatia文件结构：  satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。 ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。 satviz：可视化交互 paper：实验和绘图代码 integrat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hypatia">
+<meta property="og:url" content="https://glonkkkkk.github.io/2023/05/25/Hypatia/index.html">
+<meta property="og:site_name" content="Glonkkkkk&#39; Blog">
+<meta property="og:description" content="在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。 Hypatia文件结构：  satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。 ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。 satviz：可视化交互 paper：实验和绘图代码 integrat">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-25T09:30:37.000Z">
+<meta property="article:modified_time" content="2023-05-25T12:39:10.960Z">
+<meta property="article:author" content="Glonk">
+<meta property="article:tag" content="Hypatia">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://glonkkkkk.github.io/2023/05/25/Hypatia/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hypatia | Glonkkkkk' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Glonkkkkk' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://glonkkkkk.github.io/2023/05/25/Hypatia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/zzf.png">
+      <meta itemprop="name" content="Glonk">
+      <meta itemprop="description" content="春困秋乏">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Glonkkkkk' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hypatia
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-25 17:30:37 / 修改时间：20:39:10" itemprop="dateCreated datePublished" datetime="2023-05-25T17:30:37+08:00">2023-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study/" itemprop="url" rel="index"><span itemprop="name">Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。</p>
+<p>Hypatia文件结构：</p>
+<ul>
+<li>satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。</li>
+<li>ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。</li>
+<li>satviz：可视化交互</li>
+<li>paper：实验和绘图代码</li>
+<li>integration_tests：用于集成测试</li>
+</ul>
+<span id="more"></span>
+
+<p>参考链接：</p>
+<p>[*]<a target="_blank" rel="noopener" href="https://blog.csdn.net/JackZhaojt/article/details/128678247">https://blog.csdn.net/JackZhaojt/article/details/128678247</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lyorz/article/details/128374695">https://blog.csdn.net/lyorz/article/details/128374695</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/AntennaZ/p/16356957.html">https://www.cnblogs.com/AntennaZ/p/16356957.html</a></p>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><h4 id="conda环境配置"><a href="#conda环境配置" class="headerlink" title="conda环境配置"></a>conda环境配置</h4><p>在ubuntu+wsl的基础上安装anaconda。</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.bfsu.edu.cn/anaconda/archive/Anaconda3-5.3.1-Linux-x86<span class="built_in">_</span>64.sh</span><br><span class="line">bash Anaconda3-5.3.1-Linux-x86<span class="built_in">_</span>64.sh <span class="params">#</span>安装anaconda</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件，在 &#x2F;etc&#x2F;profile中加入<code>export PATH=~/anaconda3/bin:$PATH</code>并重新加载环境变量<code>source /etc/profile</code></p>
+<p>检查安装成功<code>conda --version</code></p>
+<h4 id="创建新环境hypatia"><a href="#创建新环境hypatia" class="headerlink" title="创建新环境hypatia"></a>创建新环境hypatia</h4><p>首先建立conda虚拟环境<code>conda create -n hypatia python=3.8</code></p>
+<p>激活虚拟环境</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source activate</span><br><span class="line">conda activate hypatia</span><br></pre></td></tr></table></figure>
+
+<h4 id="下载hypatia并安装依赖"><a href="#下载hypatia并安装依赖" class="headerlink" title="下载hypatia并安装依赖"></a>下载hypatia并安装依赖</h4><p>git clone源码<code>git clone https://github.com/snkas/hypatia</code></p>
+<p>直接运行sh会报错，需要拆解运行</p>
+<ol>
+<li><p>更新镜像源 <code>sudo apt-get update </code></p>
+</li>
+<li><p>安装cartopy <code>conda install cartopy </code></p>
+</li>
+<li><p>下载依赖和库</p>
+</li>
+</ol>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install update</span><br><span class="line">pip install numpy astropy ephem networkx sgp4 geopy matplotlib statsmodels</span><br><span class="line">sudo apt-get install libproj-dev proj-data proj-bin libgeos-dev gnuplot</span><br><span class="line">sudo apt-get -y install openmpi-bin openmpi-common openmpi-doc libopenmpi-dev lcov gnuplot</span><br><span class="line">pip install numpy astropy ephem networkx sgp4 geopy matplotlib statsmodels </span><br><span class="line"><span class="params">#</span>如果安装失败可以分别加入清华源 -i https://pypi.tuna.tsinghua.edu.cn/simple 清华源</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>安装exputil和networkload库</li>
+</ol>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">#</span>从GitHub上clone下来</span><br><span class="line">git clone https://github.com/snkas/exputilpy</span><br><span class="line">git clone https://github.com/snkas/networkload</span><br><span class="line"><span class="params">#</span>安装exputil</span><br><span class="line">cd exputilpy</span><br><span class="line">python -m pip install .</span><br><span class="line">cd ..</span><br><span class="line"><span class="params">#</span>安装networkload</span><br><span class="line">cd networkload</span><br><span class="line">bash install<span class="built_in">_</span>local.sh</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<p>经过N&#x3D;4次的尝试，终于运行到了这里，可以开始构建模块。之前总是这找不到那找不到的&gt;_&lt;</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="构建模块"><a href="#构建模块" class="headerlink" title="构建模块"></a>构建模块</h4><p><code>bash hypatia_build.sh</code></p>
+<h4 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install screen</span><br><span class="line">bash hypatia<span class="built_in">_</span>run<span class="built_in">_</span>tests.sh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>遇到问题：can’t make directory ‘&#x2F;var&#x2F;run&#x2F;screen’:permission denied</li>
+<li>解决：重启之后运行命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /var/run/screen</span><br><span class="line">sudo chmod 777 /var/run/screen</span><br></pre></td></tr></table></figure>
+
+<p>至此测试完成，可以正式开始复现</p>
+<h3 id="复现Paper"><a href="#复现Paper" class="headerlink" title="复现Paper"></a>复现Paper</h3><h4 id="生成网络数据"><a href="#生成网络数据" class="headerlink" title="生成网络数据"></a>生成网络数据</h4><p>说是能跑两天直接下载数据作者跑好的数据好了。</p>
+<p>下载<hypatia>&#x2F;paper&#x2F;hypatia_paper_temp_data.tar.gz放在paper路径下<br><code>python extract_temp_data.py</code></p>
+<h4 id="构建ns-3"><a href="#构建ns-3" class="headerlink" title="构建ns-3"></a>构建ns-3</h4><p><code>bash build.sh --debug_all</code></p>
+<h4 id="performing-analysis-using-satgenpy"><a href="#performing-analysis-using-satgenpy" class="headerlink" title="performing analysis using satgenpy"></a>performing analysis using satgenpy</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd satgenpy_analysis</span><br><span class="line">python perform_full_analysis.py</span><br></pre></td></tr></table></figure>
+
+<h4 id="a-b实验"><a href="#a-b实验" class="headerlink" title="a_b实验"></a>a_b实验</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd a<span class="built_in">_</span>b</span><br><span class="line">python step<span class="built_in">_</span>1<span class="built_in">_</span>generate<span class="built_in">_</span>runs.py</span><br><span class="line">python step<span class="built_in">_</span>2<span class="built_in">_</span>run.py</span><br><span class="line">python step<span class="built_in">_</span>3<span class="built_in">_</span>generate<span class="built_in">_</span>plots.py</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Glonk
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://glonkkkkk.github.io/2023/05/25/Hypatia/" title="Hypatia">https://glonkkkkk.github.io/2023/05/25/Hypatia/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hypatia/" rel="tag"># Hypatia</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/24/zotero/" rel="prev" title="zotero文献管理">
+      <i class="fa fa-chevron-left"></i> zotero文献管理
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">conda环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%8E%AF%E5%A2%83hypatia"><span class="nav-number">1.2.</span> <span class="nav-text">创建新环境hypatia</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDhypatia%E5%B9%B6%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.</span> <span class="nav-text">下载hypatia并安装依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9D%97"><span class="nav-number">2.1.</span> <span class="nav-text">构建模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">运行测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0Paper"><span class="nav-number">3.</span> <span class="nav-text">复现Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">生成网络数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAns-3"><span class="nav-number">3.2.</span> <span class="nav-text">构建ns-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#performing-analysis-using-satgenpy"><span class="nav-number">3.3.</span> <span class="nav-text">performing analysis using satgenpy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-b%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.4.</span> <span class="nav-text">a_b实验</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Glonk"
+      src="/images/zzf.png">
+  <p class="site-author-name" itemprop="name">Glonk</p>
+  <div class="site-description" itemprop="description">春困秋乏</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Glonk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
