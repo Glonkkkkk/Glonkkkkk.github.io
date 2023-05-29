@@ -28,7 +28,7 @@
 <meta property="og:description" content="在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。 Hypatia文件结构：  satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。 ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。 satviz：可视化交互 paper：实验和绘图代码 integrat">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T09:30:37.000Z">
-<meta property="article:modified_time" content="2023-05-25T12:39:10.960Z">
+<meta property="article:modified_time" content="2023-05-26T08:58:00.594Z">
 <meta property="article:author" content="Glonk">
 <meta property="article:tag" content="Hypatia">
 <meta name="twitter:card" content="summary">
@@ -184,10 +184,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-05-25 17:30:37 / 修改时间：20:39:10" itemprop="dateCreated datePublished" datetime="2023-05-25T17:30:37+08:00">2023-05-25</time>
+              <time title="创建时间：2023-05-25 17:30:37" itemprop="dateCreated datePublished" datetime="2023-05-25T17:30:37+08:00">2023-05-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-05-26 16:58:00" itemprop="dateModified" datetime="2023-05-26T16:58:00+08:00">2023-05-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -264,8 +270,7 @@
 <h4 id="构建ns-3"><a href="#构建ns-3" class="headerlink" title="构建ns-3"></a>构建ns-3</h4><p><code>bash build.sh --debug_all</code></p>
 <h4 id="performing-analysis-using-satgenpy"><a href="#performing-analysis-using-satgenpy" class="headerlink" title="performing analysis using satgenpy"></a>performing analysis using satgenpy</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd satgenpy_analysis</span><br><span class="line">python perform_full_analysis.py</span><br></pre></td></tr></table></figure>
 
-<h4 id="a-b实验"><a href="#a-b实验" class="headerlink" title="a_b实验"></a>a_b实验</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd a<span class="built_in">_</span>b</span><br><span class="line">python step<span class="built_in">_</span>1<span class="built_in">_</span>generate<span class="built_in">_</span>runs.py</span><br><span class="line">python step<span class="built_in">_</span>2<span class="built_in">_</span>run.py</span><br><span class="line">python step<span class="built_in">_</span>3<span class="built_in">_</span>generate<span class="built_in">_</span>plots.py</span><br></pre></td></tr></table></figure>
-
+<h4 id="a-b实验"><a href="#a-b实验" class="headerlink" title="a_b实验"></a>a_b实验</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">#</span> 切换到paper/ns3<span class="built_in">_</span>experiments/a<span class="built_in">_</span>b目录</span><br><span class="line">python step<span class="built_in">_</span>1<span class="built_in">_</span>generate<span class="built_in">_</span>runs.py</span><br><span class="line">python step<span class="built_in">_</span>2<span class="built_in">_</span>run.py</span><br><span class="line">python step<span class="built_in">_</span>3<span class="built_in">_</span>generate<span class="built_in">_</span>plots.py</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -304,7 +309,10 @@
     <a href="/2023/05/25/wsl/" rel="prev" title="wsl的安装与使用">
       <i class="fa fa-chevron-left"></i> wsl的安装与使用
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/05/29/%E7%A6%BB%E6%95%A3%E4%BA%8B%E4%BB%B6%E4%BB%BF%E7%9C%9F/" rel="next" title="离散事件仿真">
+      离散事件仿真 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -378,7 +386,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -391,7 +399,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
