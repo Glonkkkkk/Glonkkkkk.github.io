@@ -217,16 +217,19 @@
       
         <p>工欲善其事，必先利其器。非常好用且强大的文献管理软件，一劳永逸的设置。</p>
 <span id="more"></span>
-
-<h4 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h4><p>Zotero connector 可以从直接从浏览器添加文献</p>
+<h4 id="插件推荐">插件推荐</h4>
+<p>Zotero connector 可以从直接从浏览器添加文献</p>
 <p>Zotero translators 翻译神器，支持Google、有道等多种翻译</p>
 <p>Zotero Tag 增加标签</p>
 <p>Zotero Style 阅读进度条</p>
 <p>Zotfile 高效管理PDF，重命名、移动目录等</p>
 <p>Jasminum 中文文献管理插件</p>
-<h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><p>在Zotfile的基础上使用坚果云同步数据、PDF文件</p>
-<h4 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h4><h4 id="实用功能"><a href="#实用功能" class="headerlink" title="实用功能"></a>实用功能</h4><ul>
-<li>添加文件链接作为附件<br>zotero支持markdown笔记，但是不如typora使用更方便，现在可以将这两个内容结合在一起</li>
+<h4 id="同步">同步</h4>
+<p>在Zotfile的基础上使用坚果云同步数据、PDF文件</p>
+<h4 id="rss订阅">RSS订阅</h4>
+<h4 id="实用功能">实用功能</h4>
+<ul>
+<li>添加文件链接作为附件 zotero支持markdown笔记，但是不如typora使用更方便，现在可以将这两个内容结合在一起</li>
 <li>导出有标记的pdf：导出条目-包括注释</li>
 </ul>
 
@@ -329,7 +332,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="nav-number">1.</span> <span class="nav-text">插件推荐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RSS%E8%AE%A2%E9%98%85"><span class="nav-number">3.</span> <span class="nav-text">RSS订阅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">实用功能</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="nav-number">1.</span> <span class="nav-text">插件推荐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rss%E8%AE%A2%E9%98%85"><span class="nav-number">3.</span> <span class="nav-text">RSS订阅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">实用功能</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,6 +446,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

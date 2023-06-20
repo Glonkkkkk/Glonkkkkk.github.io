@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"glonkkkkk.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。 Hypatia文件结构：  satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。 ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。 satviz：可视化交互 paper：实验和绘图代码 integrat">
+  <meta name="description" content="在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。 Hypatia文件结构：  satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。 ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。 satviz：可视化交互 paper：实验和绘图代码 i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hypatia">
 <meta property="og:url" content="https://glonkkkkk.github.io/2023/05/25/Hypatia/index.html">
 <meta property="og:site_name" content="Glonkkkkk&#39; Blog">
-<meta property="og:description" content="在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。 Hypatia文件结构：  satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。 ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。 satviz：可视化交互 paper：实验和绘图代码 integrat">
+<meta property="og:description" content="在各种卫星仿真平台之间反复跳跃，不知道Hypatia好不好用，看起来star很多、比较新，尝试一波。 Hypatia文件结构：  satgenpy：python框架，用于生成LEO卫星网络，并在一段时间内生成路由。 ns3-sat-sim：基于ns-3的框架，将stagenpy生成的状态作为输入，在LEO卫星上执行包级别模拟。 satviz：可视化交互 paper：实验和绘图代码 i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T09:30:37.000Z">
 <meta property="article:modified_time" content="2023-05-26T08:58:00.594Z">
@@ -225,52 +225,52 @@
 <li>integration_tests：用于集成测试</li>
 </ul>
 <span id="more"></span>
-
 <p>参考链接：</p>
-<p>[*]<a target="_blank" rel="noopener" href="https://blog.csdn.net/JackZhaojt/article/details/128678247">https://blog.csdn.net/JackZhaojt/article/details/128678247</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lyorz/article/details/128374695">https://blog.csdn.net/lyorz/article/details/128374695</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/AntennaZ/p/16356957.html">https://www.cnblogs.com/AntennaZ/p/16356957.html</a></p>
-<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><h4 id="conda环境配置"><a href="#conda环境配置" class="headerlink" title="conda环境配置"></a>conda环境配置</h4><p>在ubuntu+wsl的基础上安装anaconda。</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.bfsu.edu.cn/anaconda/archive/Anaconda3-5.3.1-Linux-x86<span class="built_in">_</span>64.sh</span><br><span class="line">bash Anaconda3-5.3.1-Linux-x86<span class="built_in">_</span>64.sh <span class="params">#</span>安装anaconda</span><br></pre></td></tr></table></figure>
-
-<p>修改配置文件，在 &#x2F;etc&#x2F;profile中加入<code>export PATH=~/anaconda3/bin:$PATH</code>并重新加载环境变量<code>source /etc/profile</code></p>
+<p>[*]https://blog.csdn.net/JackZhaojt/article/details/128678247 https://blog.csdn.net/lyorz/article/details/128374695 https://www.cnblogs.com/AntennaZ/p/16356957.html</p>
+<h3 id="环境配置">环境配置</h3>
+<h4 id="conda环境配置">conda环境配置</h4>
+<p>在ubuntu+wsl的基础上安装anaconda。 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.bfsu.edu.cn/anaconda/archive/Anaconda3-5.3.1-Linux-x86<span class="built_in">_</span>64.sh</span><br><span class="line">bash Anaconda3-5.3.1-Linux-x86<span class="built_in">_</span>64.sh <span class="params">#</span>安装anaconda</span><br></pre></td></tr></table></figure></p>
+<p>修改配置文件，在 /etc/profile中加入<code>export PATH=~/anaconda3/bin:$PATH</code>并重新加载环境变量<code>source /etc/profile</code></p>
 <p>检查安装成功<code>conda --version</code></p>
-<h4 id="创建新环境hypatia"><a href="#创建新环境hypatia" class="headerlink" title="创建新环境hypatia"></a>创建新环境hypatia</h4><p>首先建立conda虚拟环境<code>conda create -n hypatia python=3.8</code></p>
+<h4 id="创建新环境hypatia">创建新环境hypatia</h4>
+<p>首先建立conda虚拟环境<code>conda create -n hypatia python=3.8</code></p>
 <p>激活虚拟环境</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source activate</span><br><span class="line">conda activate hypatia</span><br></pre></td></tr></table></figure>
-
-<h4 id="下载hypatia并安装依赖"><a href="#下载hypatia并安装依赖" class="headerlink" title="下载hypatia并安装依赖"></a>下载hypatia并安装依赖</h4><p>git clone源码<code>git clone https://github.com/snkas/hypatia</code></p>
+<h4 id="下载hypatia并安装依赖">下载hypatia并安装依赖</h4>
+<p>git clone源码<code>git clone https://github.com/snkas/hypatia</code></p>
 <p>直接运行sh会报错，需要拆解运行</p>
-<ol>
-<li><p>更新镜像源 <code>sudo apt-get update </code></p>
-</li>
-<li><p>安装cartopy <code>conda install cartopy </code></p>
-</li>
-<li><p>下载依赖和库</p>
-</li>
+<ol type="1">
+<li><p>更新镜像源 <code>sudo apt-get update</code></p></li>
+<li><p>安装cartopy <code>conda install cartopy</code></p></li>
+<li><p>下载依赖和库</p></li>
 </ol>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install update</span><br><span class="line">pip install numpy astropy ephem networkx sgp4 geopy matplotlib statsmodels</span><br><span class="line">sudo apt-get install libproj-dev proj-data proj-bin libgeos-dev gnuplot</span><br><span class="line">sudo apt-get -y install openmpi-bin openmpi-common openmpi-doc libopenmpi-dev lcov gnuplot</span><br><span class="line">pip install numpy astropy ephem networkx sgp4 geopy matplotlib statsmodels </span><br><span class="line"><span class="params">#</span>如果安装失败可以分别加入清华源 -i https://pypi.tuna.tsinghua.edu.cn/simple 清华源</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
+<ol start="4" type="1">
 <li>安装exputil和networkload库</li>
 </ol>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">#</span>从GitHub上clone下来</span><br><span class="line">git clone https://github.com/snkas/exputilpy</span><br><span class="line">git clone https://github.com/snkas/networkload</span><br><span class="line"><span class="params">#</span>安装exputil</span><br><span class="line">cd exputilpy</span><br><span class="line">python -m pip install .</span><br><span class="line">cd ..</span><br><span class="line"><span class="params">#</span>安装networkload</span><br><span class="line">cd networkload</span><br><span class="line">bash install<span class="built_in">_</span>local.sh</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
-
-<p>经过N&#x3D;4次的尝试，终于运行到了这里，可以开始构建模块。之前总是这找不到那找不到的&gt;_&lt;</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="构建模块"><a href="#构建模块" class="headerlink" title="构建模块"></a>构建模块</h4><p><code>bash hypatia_build.sh</code></p>
-<h4 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install screen</span><br><span class="line">bash hypatia<span class="built_in">_</span>run<span class="built_in">_</span>tests.sh</span><br></pre></td></tr></table></figure>
-
+<p>经过N=4次的尝试，终于运行到了这里，可以开始构建模块。之前总是这找不到那找不到的&gt;_&lt;</p>
+<h3 id="测试">测试</h3>
+<h4 id="构建模块">构建模块</h4>
+<p><code>bash hypatia_build.sh</code></p>
+<h4 id="运行测试">运行测试</h4>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install screen</span><br><span class="line">bash hypatia<span class="built_in">_</span>run<span class="built_in">_</span>tests.sh</span><br></pre></td></tr></table></figure>
 <ul>
-<li>遇到问题：can’t make directory ‘&#x2F;var&#x2F;run&#x2F;screen’:permission denied</li>
+<li>遇到问题：can't make directory ‘/var/run/screen’:permission denied</li>
 <li>解决：重启之后运行命令：</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /var/run/screen</span><br><span class="line">sudo chmod 777 /var/run/screen</span><br></pre></td></tr></table></figure>
-
 <p>至此测试完成，可以正式开始复现</p>
-<h3 id="复现Paper"><a href="#复现Paper" class="headerlink" title="复现Paper"></a>复现Paper</h3><h4 id="生成网络数据"><a href="#生成网络数据" class="headerlink" title="生成网络数据"></a>生成网络数据</h4><p>说是能跑两天直接下载数据作者跑好的数据好了。</p>
-<p>下载<hypatia>&#x2F;paper&#x2F;hypatia_paper_temp_data.tar.gz放在paper路径下<br><code>python extract_temp_data.py</code></p>
-<h4 id="构建ns-3"><a href="#构建ns-3" class="headerlink" title="构建ns-3"></a>构建ns-3</h4><p><code>bash build.sh --debug_all</code></p>
-<h4 id="performing-analysis-using-satgenpy"><a href="#performing-analysis-using-satgenpy" class="headerlink" title="performing analysis using satgenpy"></a>performing analysis using satgenpy</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd satgenpy_analysis</span><br><span class="line">python perform_full_analysis.py</span><br></pre></td></tr></table></figure>
-
-<h4 id="a-b实验"><a href="#a-b实验" class="headerlink" title="a_b实验"></a>a_b实验</h4><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">#</span> 切换到paper/ns3<span class="built_in">_</span>experiments/a<span class="built_in">_</span>b目录</span><br><span class="line">python step<span class="built_in">_</span>1<span class="built_in">_</span>generate<span class="built_in">_</span>runs.py</span><br><span class="line">python step<span class="built_in">_</span>2<span class="built_in">_</span>run.py</span><br><span class="line">python step<span class="built_in">_</span>3<span class="built_in">_</span>generate<span class="built_in">_</span>plots.py</span><br></pre></td></tr></table></figure>
+<h3 id="复现paper">复现Paper</h3>
+<h4 id="生成网络数据">生成网络数据</h4>
+<p>说是能跑两天直接下载数据作者跑好的数据好了。</p>
+<p>下载<hypatia>/paper/hypatia_paper_temp_data.tar.gz放在paper路径下 <code>python extract_temp_data.py</code></p>
+<h4 id="构建ns-3">构建ns-3</h4>
+<p><code>bash build.sh --debug_all</code></p>
+<h4 id="performing-analysis-using-satgenpy">performing analysis using satgenpy</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd satgenpy_analysis</span><br><span class="line">python perform_full_analysis.py</span><br></pre></td></tr></table></figure>
+<h4 id="a_b实验">a_b实验</h4>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">#</span> 切换到paper/ns3<span class="built_in">_</span>experiments/a<span class="built_in">_</span>b目录</span><br><span class="line">python step<span class="built_in">_</span>1<span class="built_in">_</span>generate<span class="built_in">_</span>runs.py</span><br><span class="line">python step<span class="built_in">_</span>2<span class="built_in">_</span>run.py</span><br><span class="line">python step<span class="built_in">_</span>3<span class="built_in">_</span>generate<span class="built_in">_</span>plots.py</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -371,7 +371,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">conda环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%8E%AF%E5%A2%83hypatia"><span class="nav-number">1.2.</span> <span class="nav-text">创建新环境hypatia</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDhypatia%E5%B9%B6%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.</span> <span class="nav-text">下载hypatia并安装依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9D%97"><span class="nav-number">2.1.</span> <span class="nav-text">构建模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">运行测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0Paper"><span class="nav-number">3.</span> <span class="nav-text">复现Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">生成网络数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAns-3"><span class="nav-number">3.2.</span> <span class="nav-text">构建ns-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#performing-analysis-using-satgenpy"><span class="nav-number">3.3.</span> <span class="nav-text">performing analysis using satgenpy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-b%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.4.</span> <span class="nav-text">a_b实验</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#conda%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">conda环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%8E%AF%E5%A2%83hypatia"><span class="nav-number">1.2.</span> <span class="nav-text">创建新环境hypatia</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDhypatia%E5%B9%B6%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">1.3.</span> <span class="nav-text">下载hypatia并安装依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9D%97"><span class="nav-number">2.1.</span> <span class="nav-text">构建模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.</span> <span class="nav-text">运行测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0paper"><span class="nav-number">3.</span> <span class="nav-text">复现Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">生成网络数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAns-3"><span class="nav-number">3.2.</span> <span class="nav-text">构建ns-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#performing-analysis-using-satgenpy"><span class="nav-number">3.3.</span> <span class="nav-text">performing analysis using satgenpy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a_b%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.4.</span> <span class="nav-text">a_b实验</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -485,6 +485,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

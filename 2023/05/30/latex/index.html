@@ -211,24 +211,27 @@
       
         <p>写少不了Latex，对比word在公式的撰写和排版上轻松许多。简要记录一些公式语法。</p>
 <span id="more"></span>
-
-<h3 id="行内公式"><a href="#行内公式" class="headerlink" title="行内公式"></a>行内公式</h3><p>行内公式通常使用<code>$..$</code>来输入</p>
-<h3 id="行间公式"><a href="#行间公式" class="headerlink" title="行间公式"></a>行间公式</h3><p>行间公式需要用<code>$$..$$</code>来输入，例如</p>
+<h3 id="行内公式">行内公式</h3>
+<p>行内公式通常使用<code>$..$</code>来输入</p>
+<h3 id="行间公式">行间公式</h3>
+<p>行间公式需要用<code>$$..$$</code>来输入，例如</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">若<span class="built_in">$</span>a&gt;0<span class="built_in">$</span>, <span class="built_in">$</span>b&gt;0<span class="built_in">$</span>, 则</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line">a+b&gt;0.</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><p>上标可以用<code>^</code>输入，例如<code>a^n</code>，效果为$a^n$；下标可以用<code>_</code>来输入，例如<code>a_1</code>，效果为$a_1$。</p>
+<h3 id="上下标">上下标</h3>
+<p>上标可以用<code>^</code>输入，例如<code>a^n</code>，效果为<span class="math inline">\(a^n\)</span>；下标可以用<code>_</code>来输入，例如<code>a_1</code>，效果为<span class="math inline">\(a_1\)</span>。</p>
 <p>上下标只会读取第一个字符，如果上下标的内容较多的话，需要改成<code>^&#123;&#125;</code>或<code>_&#123;&#125;</code></p>
-<h3 id="分式"><a href="#分式" class="headerlink" title="分式"></a>分式</h3><p>分式可以用<code>\dfrac&#123;&#125;&#123;&#125;</code>来输入，例如<code>\dfrac&#123;a&#125;&#123;b&#125;</code>，效果为$\dfrac{a}{b}$。</p>
-<p>为了在行间、分子、分母或者指数上输入较小的分式，可以改用<code>\frac&#123;&#125;&#123;&#125;</code>，例如<code>a^\frac&#123;1&#125;&#123;n&#125;</code>，效果为$a^\frac{1}{n}$</p>
-<h3 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h3><p>括号可以直接用<code>(..)</code>输入，但是需要注意的是，有时候括号内的内容高度较大，需要改用<code>\left(..\right)</code>。例如<code>\left(1+\dfrac&#123;1&#125;&#123;n&#125;\right)^n</code>，效果是$\left(1+\dfrac{1}{n}\right)^n$。</p>
+<h3 id="分式">分式</h3>
+<p>分式可以用<code>\dfrac&#123;&#125;&#123;&#125;</code>来输入，例如<code>\dfrac&#123;a&#125;&#123;b&#125;</code>，效果为<span class="math inline">\(\dfrac{a}{b}\)</span>。</p>
+<p>为了在行间、分子、分母或者指数上输入较小的分式，可以改用<code>\frac&#123;&#125;&#123;&#125;</code>，例如<code>a^\frac&#123;1&#125;&#123;n&#125;</code>，效果为<span class="math inline">\(a^\frac{1}{n}\)</span></p>
+<h3 id="括号">括号</h3>
+<p>括号可以直接用<code>(..)</code>输入，但是需要注意的是，有时候括号内的内容高度较大，需要改用<code>\left(..\right)</code>。例如<code>\left(1+\dfrac&#123;1&#125;&#123;n&#125;\right)^n</code>，效果是<span class="math inline">\(\left(1+\dfrac{1}{n}\right)^n\)</span>。</p>
 <p>在中间需要隔开时，可以用<code>\left(..\middle|..\right)</code>。</p>
 <p>另外，输入大括号{}时需要用<code>\&#123;..\&#125;</code>，其中<code>\</code>起到了转义作用。</p>
-<h3 id="大括号"><a href="#大括号" class="headerlink" title="大括号"></a>大括号</h3><p>可以使用<code>cases</code>环境</p>
+<h3 id="大括号">大括号</h3>
+<p>可以使用<code>cases</code>环境</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line">f(x)=<span class="keyword">\begin</span>&#123;cases&#125;</span><br><span class="line">	x, <span class="built_in">&amp;</span> x&gt;0, <span class="keyword">\\</span></span><br><span class="line">	-x, <span class="built_in">&amp;</span> x<span class="keyword">\leq</span> 0.</span><br><span class="line"><span class="keyword">\end</span>&#123;cases&#125;</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="行列式和矩阵"><a href="#行列式和矩阵" class="headerlink" title="行列式和矩阵"></a>行列式和矩阵</h3><p>矩阵可以用<code>bmatrix</code>环境和<code>pmatrix</code>环境，分别为方括号和圆括号。行列式以使用<code>vmatrix</code>环境。</p>
+<h3 id="行列式和矩阵">行列式和矩阵</h3>
+<p>矩阵可以用<code>bmatrix</code>环境和<code>pmatrix</code>环境，分别为方括号和圆括号。行列式以使用<code>vmatrix</code>环境。</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;bmatrix&#125;</span><br><span class="line">	a <span class="built_in">&amp;</span> b <span class="keyword">\\</span></span><br><span class="line">	c <span class="built_in">&amp;</span> d</span><br><span class="line"><span class="keyword">\end</span>&#123;bmatrix&#125;</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -443,6 +446,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
