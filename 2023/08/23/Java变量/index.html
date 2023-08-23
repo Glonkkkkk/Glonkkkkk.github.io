@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"glonkkkkk.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="离散事件仿真是关注这样的系统：系统的状态只在某一时间点发上变化，而状态的变化是由于事件发生造成的。卫星通信的路由中，仿真就是基于离散时间驱动进行的，所以想学习一下什么是离散事件仿真。">
+  <meta name="description" content="Java变量 介绍变量的种类、使用和类型转换。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="离散事件仿真">
-<meta property="og:url" content="https://glonkkkkk.github.io/2023/05/29/%E7%A6%BB%E6%95%A3%E4%BA%8B%E4%BB%B6%E4%BB%BF%E7%9C%9F/index.html">
+<meta property="og:title" content="Java变量">
+<meta property="og:url" content="https://glonkkkkk.github.io/2023/08/23/Java%E5%8F%98%E9%87%8F/index.html">
 <meta property="og:site_name" content="Glonkkkkk&#39; Blog">
-<meta property="og:description" content="离散事件仿真是关注这样的系统：系统的状态只在某一时间点发上变化，而状态的变化是由于事件发生造成的。卫星通信的路由中，仿真就是基于离散时间驱动进行的，所以想学习一下什么是离散事件仿真。">
+<meta property="og:description" content="Java变量 介绍变量的种类、使用和类型转换。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-29T13:23:03.000Z">
-<meta property="article:modified_time" content="2023-05-30T09:05:10.147Z">
+<meta property="article:published_time" content="2023-08-23T12:37:35.000Z">
+<meta property="article:modified_time" content="2023-08-23T12:38:47.049Z">
 <meta property="article:author" content="Glonk">
-<meta property="article:tag" content="Simulation">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://glonkkkkk.github.io/2023/05/29/%E7%A6%BB%E6%95%A3%E4%BA%8B%E4%BB%B6%E4%BB%BF%E7%9C%9F/">
+<link rel="canonical" href="https://glonkkkkk.github.io/2023/08/23/Java%E5%8F%98%E9%87%8F/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>离散事件仿真 | Glonkkkkk' Blog</title>
+  <title>Java变量 | Glonkkkkk' Blog</title>
   
 
 
@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://glonkkkkk.github.io/2023/05/29/%E7%A6%BB%E6%95%A3%E4%BA%8B%E4%BB%B6%E4%BB%BF%E7%9C%9F/">
+    <link itemprop="mainEntityOfPage" href="https://glonkkkkk.github.io/2023/08/23/Java%E5%8F%98%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/zzf.png">
@@ -175,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          离散事件仿真
+          Java变量
         </h1>
 
         <div class="post-meta">
@@ -184,16 +184,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-05-29 21:23:03" itemprop="dateCreated datePublished" datetime="2023-05-29T21:23:03+08:00">2023-05-29</time>
+              <time title="创建时间：2023-08-23 20:37:35 / 修改时间：20:38:47" itemprop="dateCreated datePublished" datetime="2023-08-23T20:37:35+08:00">2023-08-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-05-30 17:05:10" itemprop="dateModified" datetime="2023-05-30T17:05:10+08:00">2023-05-30</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -215,8 +209,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>离散事件仿真是关注这样的系统：系统的状态只在某一时间点发上变化，而状态的变化是由于事件发生造成的。卫星通信的路由中，仿真就是基于离散时间驱动进行的，所以想学习一下什么是离散事件仿真。</p>
+        <h3 id="java变量">Java变量</h3>
+<p>介绍变量的种类、使用和类型转换。</p>
 <span id="more"></span>
+<h4 id="变量介绍">变量介绍</h4>
+<p>变量是程序的 基本组成单位，基本要素为类型、名称、值。 变量相当于内存中一个存储空间的表示，通过变量名可以访问变量。 使用的基本步骤：变量声明、赋值、使用。</p>
+<p>注意事项： 变量代表一个内存区域，不同类型变量占用不同的内存空间 变量先声明后使用 变量在同一个作用域内不能重名 变量=变量名+值+数据类型</p>
+<h4 id="的使用">”+“的使用</h4>
+<ol type="1">
+<li>数值型：做加法运算</li>
+<li>字符串：做拼接运算</li>
+<li>运算顺序是从左到右</li>
+</ol>
+<h4 id="数据类型">数据类型</h4>
+<p>每一种数据都有明确的数据类型，在内存中分配不同大小的内存空间。 基本数据类型：数值型（整数、浮点）、字符型char、布尔型boolean； 引用类型类、接口、数组</p>
+<p><strong>整数类型</strong>：存放整数值 四种类型：byte[1]、short[2]、int[4]、long[8]，默认为int型 声明long型常量后面需要加'l'或'L'。<code>long n = 1L;</code></p>
+<p><strong>浮点类型</strong>：存放小数 两种类型：单精度float[4]、双精度double[8]，默认为double更精确 声明float型常量后面需要加'f'或'F'。<code>float a = 5.2f;</code> 两种表示形式：十进制、科学计数法 <strong>使用陷阱：存储的近似值</strong>。对运算结果为小数进行相等比较时，要以两个数差值的绝对值在某个精度范围内来判断</p>
+<p><strong>字符类型</strong>：char[2]表示单个字符，占两个字节。 使用细节： 字符常量是用单引号括起来的单个字符 可以使用转义字符，变成特殊字符型常量 本质是一个整数，输出其对应的unicode码对应字符 运算时相当于一个整数 字符本质： 实际存储为字符对应的码值的二进制，字符和码值通过编码表对应</p>
+<p><strong>布尔类型</strong>：boolean[1]真true or假false 占用一个字节，常用语逻辑运算：if、while、do-while、for。 不可以用非0的整数代替，区别与C语言。</p>
+<h4 id="java-api文档">Java API文档</h4>
+<p>Java提供的基础类，查找：matools.com Java类的组织形式：JDK-包-接口、类（字段、构造方法、成员方法）、异常</p>
+<h4 id="编码">编码</h4>
+<p>ASCII码：规定了128个字符，缺点是不能表示所有字符 Unicode编码：将所有符号编码，英文字母和汉字都占用2个字节。Unicode码兼容ASCII码。 UTF-8编码：改进Unicode编码，是一种变长编码。</p>
+<h4 id="数据类型转换">数据类型转换</h4>
+<h5 id="基本数据类型转换">基本数据类型转换</h5>
+<p>自动类型转换：精度小的类型可以自动转换为精度大的类型</p>
+<ol type="1">
+<li>多种类型混合运算：系统自动将所有数据转换为容量最大的那种，再进行计算。</li>
+<li>把高精度转换为低精度会报错</li>
+<li>byte、short和char之间不会相互自动转换</li>
+<li>byte、short、char三者可以计算，再计算时先自动转为int</li>
+<li>boolean类型不参与自动转换</li>
+<li>自动提升：运算结果的类型自动提升为操作数中最大的类型</li>
+</ol>
+<p>强制类型转换：通过强制转换符号，将精度大的类型强制转换为精度小的类型</p>
+<ol type="1">
+<li>强制转换只对最近的操作数有效，可以使用小括号提升优先级</li>
+<li>char类型可以保存int常量值，但不能保存int变量值</li>
+<li>byte和short在进行运算时，当作int处理</li>
+</ol>
+<h5 id="基本数据类型和string类型转换">基本数据类型和String类型转换</h5>
+<p>基本类型转字符串：将基本类型与空字符串相加 字符串转基本类型：调用parseXX方法 从字符串取出字符：s.charAt(n)</p>
+<ol type="1">
+<li>确保数据的有效性</li>
+<li>解决格式不正确的异常处理</li>
+</ol>
 
     </div>
 
@@ -232,7 +269,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://glonkkkkk.github.io/2023/05/29/%E7%A6%BB%E6%95%A3%E4%BA%8B%E4%BB%B6%E4%BB%BF%E7%9C%9F/" title="离散事件仿真">https://glonkkkkk.github.io/2023/05/29/离散事件仿真/</a>
+    <a href="https://glonkkkkk.github.io/2023/08/23/Java%E5%8F%98%E9%87%8F/" title="Java变量">https://glonkkkkk.github.io/2023/08/23/Java变量/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -243,7 +280,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Simulation/" rel="tag"># Simulation</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
         
@@ -252,13 +289,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/05/25/Hypatia/" rel="prev" title="Hypatia">
-      <i class="fa fa-chevron-left"></i> Hypatia
+    <a href="/2023/08/23/Java%E6%A6%82%E8%BF%B0/" rel="prev" title="Java概述">
+      <i class="fa fa-chevron-left"></i> Java概述
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/05/30/latex/" rel="next" title="Latex使用">
-      Latex使用 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -317,6 +351,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">Java变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">变量介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">”+“的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-api%E6%96%87%E6%A1%A3"><span class="nav-number">1.4.</span> <span class="nav-text">Java API文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">1.5.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.6.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.6.1.</span> <span class="nav-text">基本数据类型转换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8Cstring%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.6.2.</span> <span class="nav-text">基本数据类型和String类型转换</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
