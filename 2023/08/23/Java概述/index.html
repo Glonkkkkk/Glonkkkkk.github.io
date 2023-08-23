@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"glonkkkkk.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="以前总觉得搭博客是大佬行为，但随着记下来的笔记多了，觉得通过博客来分类记录、持续记录也是很好的。契机是学习omnetpp的时候搜索到了一位师姐的博客，看起来很厉害。再加上jcc也提到想重新搭博客，于是说搞就搞。 其实用开源框架的话，并没有那么复杂，有一点按图索骥的意思。">
+  <meta name="description" content="Java概述 Java课程第二章，记录Java的入门知识。 Java历史 Java 8&#x2F; Java 11，两个长期支持版本。甲骨文公司负责维护 Java技术体系：Java SE标准版、Java EE企业版 Java特性 面向对象； 健壮，强类型、异常处理、垃圾自动收集； 跨平台：.class文件可以在多个系统下运行； 解释型：需要解释器来执行 Java运行机制 JVM虚拟机，包含在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="blog搭建">
-<meta property="og:url" content="https://glonkkkkk.github.io/2023/05/22/blog/index.html">
+<meta property="og:title" content="Java概述">
+<meta property="og:url" content="https://glonkkkkk.github.io/2023/08/23/Java%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="Glonkkkkk&#39; Blog">
-<meta property="og:description" content="以前总觉得搭博客是大佬行为，但随着记下来的笔记多了，觉得通过博客来分类记录、持续记录也是很好的。契机是学习omnetpp的时候搜索到了一位师姐的博客，看起来很厉害。再加上jcc也提到想重新搭博客，于是说搞就搞。 其实用开源框架的话，并没有那么复杂，有一点按图索骥的意思。">
+<meta property="og:description" content="Java概述 Java课程第二章，记录Java的入门知识。 Java历史 Java 8&#x2F; Java 11，两个长期支持版本。甲骨文公司负责维护 Java技术体系：Java SE标准版、Java EE企业版 Java特性 面向对象； 健壮，强类型、异常处理、垃圾自动收集； 跨平台：.class文件可以在多个系统下运行； 解释型：需要解释器来执行 Java运行机制 JVM虚拟机，包含在">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-22T13:29:33.000Z">
-<meta property="article:modified_time" content="2023-06-20T02:50:26.457Z">
+<meta property="article:published_time" content="2023-08-23T08:20:22.000Z">
+<meta property="article:modified_time" content="2023-08-23T08:22:20.815Z">
 <meta property="article:author" content="Glonk">
-<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://glonkkkkk.github.io/2023/05/22/blog/">
+<link rel="canonical" href="https://glonkkkkk.github.io/2023/08/23/Java%E6%A6%82%E8%BF%B0/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>blog搭建 | Glonkkkkk' Blog</title>
+  <title>Java概述 | Glonkkkkk' Blog</title>
   
 
 
@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://glonkkkkk.github.io/2023/05/22/blog/">
+    <link itemprop="mainEntityOfPage" href="https://glonkkkkk.github.io/2023/08/23/Java%E6%A6%82%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/zzf.png">
@@ -175,7 +175,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          blog搭建
+          Java概述
         </h1>
 
         <div class="post-meta">
@@ -184,23 +184,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-05-22 21:29:33" itemprop="dateCreated datePublished" datetime="2023-05-22T21:29:33+08:00">2023-05-22</time>
+              <time title="创建时间：2023-08-23 16:20:22 / 修改时间：16:22:20" itemprop="dateCreated datePublished" datetime="2023-08-23T16:20:22+08:00">2023-08-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-20 10:50:26" itemprop="dateModified" datetime="2023-06-20T10:50:26+08:00">2023-06-20</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Daily/" itemprop="url" rel="index"><span itemprop="name">Daily</span></a>
+                  <a href="/categories/Study/" itemprop="url" rel="index"><span itemprop="name">Study</span></a>
                 </span>
             </span>
 
@@ -215,46 +209,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>以前总觉得搭博客是大佬行为，但随着记下来的笔记多了，觉得通过博客来分类记录、持续记录也是很好的。契机是学习omnetpp的时候搜索到了一位师姐的博客，看起来很厉害。再加上jcc也提到想重新搭博客，于是说搞就搞。 其实用开源框架的话，并没有那么复杂，有一点按图索骥的意思。</p>
-<span id="more"></span>
-<h3 id="搭建步骤">搭建步骤</h3>
-<h4 id="github相关">github相关</h4>
-<p>因为使用的是hexo+github，那github账号是必不可少的。 注册github账号、安装git、绑定github并test提交文件，关于git操作会再列一篇记录一下。</p>
-<h4 id="购买域名">购买域名</h4>
-<p>如果有一个域名的话，感觉博客会厉害很多，但是还没想好名字，以及被贫穷限制。</p>
-<h4 id="安装nodejs和hexo">安装nodejs和hexo</h4>
-<p>如果说前面是序章的话，正文终于开始了。</p>
-<p>首先是安装node.js，需要配置一些环境变量。</p>
-<p>然后在git下安装hexo框架</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli <span class="params">#</span>安装hexo</span><br><span class="line">hexo init     <span class="params">#</span>初始化文件夹</span><br><span class="line">npm install   <span class="params">#</span>安装依赖</span><br><span class="line">hexo generate <span class="params">#</span>生成静态网页</span><br><span class="line">hexo server   <span class="params">#</span>部署在本地，可以在本地浏览部署结果</span><br></pre></td></tr></table></figure>
-<p>这个时候就可以在本地访问博客啦！~</p>
-<h4 id="将博客部署在github-page">将博客部署在Github Page</h4>
-<p>在自己的github中建立一个指定命名的仓库<code>xx.github.io</code></p>
-<p>然后在博客的根目录下安装hexo的插件<code>cnpm install --save hexo-deployer-git</code></p>
-<p>修改根目录下的yaml文件_config.yml，加入仓库地址然后就可以快乐部署啦，这个地方需要注意分支的名称。</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean   <span class="params">#</span>清除缓存文件 db.json 和已生成的静态文件 public</span><br><span class="line">hexo g       <span class="params">#</span>生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span><br><span class="line">hexo d       <span class="params">#</span>自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span><br><span class="line">hexo clean <span class="built_in">&amp;</span><span class="built_in">&amp;</span> hexo d -g <span class="params">#</span>将三条命令合并</span><br></pre></td></tr></table></figure>
-<h4 id="美化">美化</h4>
-<p>截止目前为止，博客就搭建好啦，但光秃秃的，需要一些美化。目前使用的是next主题，后面可能会再次就进行修改。主要进行了tag修改、语言修改，有待持续优化。</p>
-<ul>
-<li>加入了头像、图标</li>
-<li>启用了进度条功能</li>
-</ul>
-<p>之前有被推荐icarus的主题，也蛮好看的，maybe尝试一下。</p>
-<h3 id="快乐写水博客">快乐写（水）博客</h3>
-<p>再美的博客也是用来写的，常用的当然是markdown语言。感觉自己非常喜欢折腾这些工具，希望能真的提高生产力。</p>
-<h4 id="新建博客">新建博客</h4>
-<p>在根目录下<code>hexo new [布局] &lt;标题&gt;</code>，然后会在source_posts路径下生成md文件，就可以开动啦！！！（或者直接在路径下新建文件）</p>
-<h4 id="删博客">删博客</h4>
-<p>删掉md文件，删掉.deploy_git。执行<code>hexo clean &amp;&amp; hexo d -g</code></p>
-<h4 id="图片插入">图片插入</h4>
-<p>将图片放入图片源文件夹，进行相对路径（/pic/）的引用。</p>
-<h4 id="踩坑行为">踩坑行为</h4>
-<ul>
-<li>建立了main和master两个分支，推送错误</li>
-<li>图片路径错误</li>
-<li>导航栏图标icon添加</li>
-<li>博客起始，title:,date:,tags:,后面一定要有空格。</li>
-</ul>
+        <h3 id="java概述">Java概述</h3>
+<p>Java课程第二章，记录Java的入门知识。</p>
+<h4 id="java历史">Java历史</h4>
+<p>Java 8/ Java 11，两个长期支持版本。甲骨文公司负责维护</p>
+<p>Java技术体系：Java SE标准版、Java EE企业版</p>
+<h4 id="java特性">Java特性</h4>
+<p>面向对象； 健壮，强类型、异常处理、垃圾自动收集； 跨平台：.class文件可以在多个系统下运行； 解释型：需要解释器来执行</p>
+<h4 id="java运行机制">Java运行机制</h4>
+<p>JVM虚拟机，包含在JDK中，对于不同平台有不同虚拟机；屏蔽了底层平台的差别。</p>
+<p>JDK=JRE+Java开发工具（javac）。</p>
+<p>JRE=JVM+Java核心类库，Java运行环境。</p>
+<h4 id="配置环境变量">配置环境变量</h4>
+<h4 id="java快速入门">Java快速入门</h4>
+<ol type="1">
+<li><p>需求说明</p></li>
+<li><p>开发步骤： 编写代码到hello.java源文件； 通过javac进行编译，生成.class字节码文件； 通过java运行类得到结果</p></li>
+<li><p>运行原理：</p></li>
+</ol>
+<p>设置编码：文件-设置文件编码-选择GBK；</p>
+<h4 id="java开发细节说明">Java开发细节说明</h4>
+<ol type="1">
+<li>源文件的基本组成是类class</li>
+<li>程序的执行入口是主函数main</li>
+<li>严格区分大小写</li>
+<li>一个源文件之多有一个public类，其他种类个数不限；每一个类编译后会对应一个class文件</li>
+<li>文件名要以公有类的类名命名，类名首字母大写</li>
+<li>入口main可以放在非public类中</li>
+</ol>
+<h4 id="如何学习技术">如何学习技术？</h4>
+<p>了解需求、学习新技术的基本原理和基本语法、快速入门（基本程序、增删改查crud）、技术的细节和注意事项</p>
+<h4 id="转义字符">转义字符</h4>
+<p>制表、换行、回车</p>
+<h4 id="易错">易错</h4>
+<p>1.找不到文件：路径错误</p>
+<p>2.主类名和文件名不一致</p>
+<p>3.缺少分号</p>
+<p>4.语法错误</p>
+<h4 id="注释comment">注释comment</h4>
+<p>良好的变成习惯，提高代码可读性。</p>
+<p>注释类型：单行/多行/文档注释</p>
+<p>文档注释：javadoc -d 文件夹名 -标签 文件名</p>
+<h4 id="代码规范">代码规范</h4>
+<p>类、方法的注释，要以javadoc的方式来写</p>
+<p>单行/多行注释，着重于为什么要这么写</p>
+<p>tab和shift+tab右移和左移</p>
+<p>运算符和等号两遍习惯各加一个空格</p>
+<p>源文件使用utf-8格式</p>
+<p>行宽字符不超过80</p>
+<p>次行风格和行尾风格</p>
+<h4 id="dos命令">DOS命令</h4>
+<p>dos：磁盘操作系统，可以接受、解析、执行指令</p>
+<p>常用命令：查看当前目录dir、切换盘符cd、切换到上一级cd ..和根目录cd<br />
+查看制定目录下的所有子级目录tree、清屏cls、退出dos用exit</p>
+<p>相对路径：从当前目录开始定位，形成的路径 绝对路径：从顶级目录开始定位，形成的路径</p>
 
     </div>
 
@@ -270,7 +278,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://glonkkkkk.github.io/2023/05/22/blog/" title="blog搭建">https://glonkkkkk.github.io/2023/05/22/blog/</a>
+    <a href="https://glonkkkkk.github.io/2023/08/23/Java%E6%A6%82%E8%BF%B0/" title="Java概述">https://glonkkkkk.github.io/2023/08/23/Java概述/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -281,7 +289,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Blog/" rel="tag"># Blog</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
         
@@ -289,11 +297,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2023/05/24/git/" rel="next" title="git使用">
-      git使用 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/06/19/LDPC/" rel="prev" title="LDPC">
+      <i class="fa fa-chevron-left"></i> LDPC
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -352,7 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">搭建步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#github%E7%9B%B8%E5%85%B3"><span class="nav-number">1.1.</span> <span class="nav-text">github相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D"><span class="nav-number">1.2.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nodejs%E5%92%8Chexo"><span class="nav-number">1.3.</span> <span class="nav-text">安装nodejs和hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%9C%A8github-page"><span class="nav-number">1.4.</span> <span class="nav-text">将博客部署在Github Page</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96"><span class="nav-number">1.5.</span> <span class="nav-text">美化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E4%B9%90%E5%86%99%E6%B0%B4%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.</span> <span class="nav-text">快乐写（水）博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.1.</span> <span class="nav-text">新建博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.2.</span> <span class="nav-text">删博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">图片插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%A1%8C%E4%B8%BA"><span class="nav-number">2.4.</span> <span class="nav-text">踩坑行为</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">Java概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.</span> <span class="nav-text">Java历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">Java特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.3.</span> <span class="nav-text">Java运行机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">配置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">1.5.</span> <span class="nav-text">Java快速入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E5%BC%80%E5%8F%91%E7%BB%86%E8%8A%82%E8%AF%B4%E6%98%8E"><span class="nav-number">1.6.</span> <span class="nav-text">Java开发细节说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0%E6%8A%80%E6%9C%AF"><span class="nav-number">1.7.</span> <span class="nav-text">如何学习技术？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-number">1.8.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%93%E9%94%99"><span class="nav-number">1.9.</span> <span class="nav-text">易错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E9%87%8Acomment"><span class="nav-number">1.10.</span> <span class="nav-text">注释comment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-number">1.11.</span> <span class="nav-text">代码规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dos%E5%91%BD%E4%BB%A4"><span class="nav-number">1.12.</span> <span class="nav-text">DOS命令</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
