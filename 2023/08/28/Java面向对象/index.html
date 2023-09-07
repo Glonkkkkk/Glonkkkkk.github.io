@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"glonkkkkk.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Java面向对象基础 类与对象 事物-&gt;对象（属性, 行为） 类就是一种自定义数据类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面向对象">
+<meta property="og:url" content="https://glonkkkkk.github.io/2023/08/28/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:site_name" content="Glonkkkkk&#39; Blog">
+<meta property="og:description" content="Java面向对象基础 类与对象 事物-&gt;对象（属性, 行为） 类就是一种自定义数据类型">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-28T13:13:03.000Z">
+<meta property="article:modified_time" content="2023-09-07T09:22:51.419Z">
+<meta property="article:author" content="Glonk">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://glonkkkkk.github.io/2023/08/28/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java面向对象 | Glonkkkkk' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Glonkkkkk' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://glonkkkkk.github.io/2023/08/28/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/zzf.png">
+      <meta itemprop="name" content="Glonk">
+      <meta itemprop="description" content="春困秋乏">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Glonkkkkk' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java面向对象
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-28 21:13:03" itemprop="dateCreated datePublished" datetime="2023-08-28T21:13:03+08:00">2023-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-07 17:22:51" itemprop="dateModified" datetime="2023-09-07T17:22:51+08:00">2023-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study/" itemprop="url" rel="index"><span itemprop="name">Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="java面向对象基础">Java面向对象基础</h3>
+<h4 id="类与对象">类与对象</h4>
+<p>事物-&gt;对象（属性, 行为）</p>
+<p>类就是一种自定义数据类型</p>
+<span id="more"></span>
+<p><strong>对象在内存中的存在形式</strong></p>
+<p>属性：类的组成部分 属性的定义语法和变量相同，但有访问修饰符（public, protected, private, 默认） 一般是基本数据类型，也可以是引用类型（对象） 如果不赋值，有默认值，和数组规则相同。</p>
+<p>创建对象：先声明再创建、直接创建 先加载类信息；在堆中分配空间，进行默认初始化，把地址赋给对象；进行指定初始</p>
+<p>类和对象的内存分配： 栈：存放基本数据类型 堆：存放对象 方法区：常量池，类加载信息</p>
+<h4 id="成员方法">成员方法</h4>
+<p>函数的定义： 修饰符 返回数据类型 方法名（参数列表）{方法体; return 返回值;}</p>
+<p>方法调用机制： 当程序执行到方法时，就会开辟独立的空间（栈空间） 当一个方法执行完毕后，就回返回到调用的位置，继续执行</p>
+<p>好处：提高代码复用性；可以将细节封装提供调用</p>
+<p>细节：</p>
+<ol type="1">
+<li>修饰符的作用是方法的控制范围</li>
+<li>返回：方法最多有一个返回值； 返回值可以是任意类型 返回值类型必须和return的值类型一致或兼容</li>
+<li>方法名遵从小驼峰命名</li>
+</ol>
+<p>参数列表： 一个方法可以有0个或多个参数 参数可以为任意类型，包含基本类型或引用类型 形参和实参需要对应</p>
+<p>方法调用细节： 同一个类中的方法可以直接调用 跨类调用需要通过对象名<code>对象名.方法名(参数);</code> 跨类的方法调用和方法的访问修饰符相关</p>
+<h4 id="成员方法传参机制">成员方法传参机制</h4>
+<p>基本数据类型：值拷贝，由于栈的存储空间隔离，形参的改变不影响实参。 引用数据类型：地址传递，可以通过形参影响实参。</p>
+<h5 id="克隆对象">克隆对象：</h5>
+<p>复制对象并返回，得到的新对象和原来的对象是两个独立的对象，但属性相同。</p>
+<h4 id="递归">递归</h4>
+<p>方法自己调用自己。</p>
+<p>递归要素：递归关系和递归边界</p>
+<p>遵守的规则： 执行方法时，会创建一个新的受保护的独立空间 方法的局部变量是独立的，不会相互影响 传递是引用数据类型变量，会共享该类型的数据 递归必须向退出递归的条件逼近，否则就是无限递归 当一个方法执行完毕，就会Return给到调用的地方。</p>
+<p>案例：走迷宫/汉诺塔/八皇后</p>
+<h4 id="方法重载">方法重载</h4>
+<p>同一个类中，有多个同名方法的存在，但要求形参列表不同。</p>
+<p>使用细节：方法名必须相同；形参列表必须不同；返回类型无要求</p>
+<h4 id="可变参数">可变参数</h4>
+<p>将同一个类中同名同功能但参数个数不同的方法，封装成一个方法 <code>访问修饰符 返回类型 方法名(数据类型... 形参名)</code></p>
+<p>使用细节： 可变参数的实参可以是0-任意个 实参可以是数组 可变参数的本质是数组 可变参数可以和普通类型参数一起放在形参列表，但必须保证可变参数在最后 一个形参列表，只能有一个可变参数</p>
+<h4 id="作用域-非常重要">作用域-非常重要</h4>
+<ol type="1">
+<li>主要的变量：属性（成员变量）和局部变量</li>
+<li>局部变量：在成员方法中定义的变量</li>
+<li>作用域的分类： 全局变量：属性，作用域为整个类 局部变量：其他变量，作用域为定义的代码块</li>
+<li>全局变量：可以不赋值，直接使用；局部变量必须赋值后使用</li>
+</ol>
+<p>使用细节： 属性和局部变量可以重名，遵循就近原则 同一作用域中，两个局部变量不能重名 属性的生命周期较长；局部变量生命周期较短 变量的作用域范围不同：属性可以在本类或通过调用使用；局部变量只能在本类对应的方法中使用 修饰符不同：属性可以加修饰符，局部变量不可以加修饰符</p>
+<h4 id="构造方法构造器">构造方法（构造器）</h4>
+<p><code>[修饰符] 方法名(形参列表)</code></p>
+<p>完成对新对象的初始化</p>
+<ol type="1">
+<li>构造器的修饰符可以是四种</li>
+<li>构造器没有返回值，不能写<strong>void</strong></li>
+<li>方法名和类名一致</li>
+<li>参数列表和成员方法具有相同规则</li>
+<li>构造器的调用由系统完成，new时默认调用</li>
+</ol>
+<p>使用细节： 一个类可以定义多个构造器，进行重载 构造器是完成对象的初始化，不是创建对象 如果没有定义构造器，系统会自动生成一个<strong>默认无参数构造方法</strong> 当定义了自己的构造器后，默认的构造器就被覆盖了</p>
+<h4 id="对象创建的流程分析">对象创建的流程分析</h4>
+<ol type="1">
+<li>加载Person类信息(Person.class)，只会加载一次</li>
+<li>在堆中分配对象空间</li>
+<li>完成对象初始化</li>
+<li>对象在堆中的地址，返回给对象名</li>
+</ol>
+<h4 id="this关键字">this关键字</h4>
+<p>this代表当前对象，哪个对象调用，this就代表哪个对象。可以解决变量命名问题</p>
+<p>使用细节： this关键字可以用来访问本类的属性、方法、构造器 用于区分当前类的属性和局部变量 可以在一个构造器中访问另一个构造器，但必须放在第一句 this不能在类外部使用，只能在类定义的方法中使用</p>
+<h3 id="java面向对象中级">Java面向对象中级</h3>
+<h4 id="idea">IDEA</h4>
+<p>传说中最好的Java IDE</p>
+<p>以项目为单位来管理</p>
+<p><strong>快捷键</strong></p>
+<ol type="1">
+<li>删除当前行：ctrl+d</li>
+<li>复制当前行：ctrl+alt+向下箭头</li>
+<li>注释和取消：ctrl+/</li>
+<li>导入该行需要的类：alt + enter</li>
+<li>快速格式化：ctrl+alt+L</li>
+<li>快速运行程序：ctrl+shift+F10</li>
+<li>生成构造方法：alt+insert(Fn+J)</li>
+</ol>
+<p><strong>IDEA模板</strong> main快捷键 sout：print快捷键 fori：循环</p>
+<h4 id="包">包</h4>
+<p>包的本质：创建不同的文件夹来保存类文件</p>
+<p>应用： 区分相同名字的类 管理类 控制访问范围</p>
+<p>创建语法：<code>package 包名</code> 对类打包，需要放在最上面 引入语法：<code>import 包名.*</code> 导入包的所有类 <code>import 包名.类名</code> 导入包中指定类</p>
+<p>命名规则： 只能包含数字、字母、下划线、小圆点，不能以数字开头，不能是关键字or保留字</p>
+<p>命名规范： 小写字母+小圆点：com.公司名.项目名.业务模块</p>
+<p>常用的包： java.lang.* 基本包，默认引入 java.util.* util包，系统提供的工具包、工具类 java.net.* 网络包 java.awt.* GUI包</p>
+<h4 id="访问修饰符">访问修饰符</h4>
+<p>用访问修饰符来控制方法和属性的访问权限</p>
+<p>public：对外公开 protect：受保护，对子类和同一个包中的类公开 默认：对同一个包中的类公开 private：只有类本身可以访问，不对外公开</p>
+<p>注意事项： 修饰符可以用来修饰类中的属性、成员方法以及类 只有默认和public用来修饰类 成员方法的访问规则和属性完全一样</p>
+<p><strong><em>面向对象的三个特征：封装、继承、多态</em></strong></p>
+<h4 id="封装encaplation">封装encaplation</h4>
+<p>封装是把抽象出来的数据（属性）和对数据的操作（方法）封装在一起。数据被保护在内部，程序的其他部分只有通过被授权的方法，才能对数据进行操作。</p>
+<p>封装的好处： 隐藏实现细节；可以对数据进行验证、保证安全合理</p>
+<p>封装的三步骤：</p>
+<ol type="1">
+<li>将属性进行私有化</li>
+<li>提供一个公共的set方法，对属性判断并赋值，加入数据验证的业务逻辑</li>
+<li>提供一个公共的get方法，用于获取属性的值</li>
+</ol>
+<h4 id="继承">继承</h4>
+<p>解决复用，当多个类存在相同的属性和方法，可以抽象出父类，子类继承父类不需要再重新定义属性和方法。提高代码复用性、扩展性、维护性。</p>
+<p>继承语法 <code>class 子类 extends 父类</code></p>
+<p>细节： 1.子类继承所有属性和方法，但是私有属性/方法不能在子类中直接访问，要通过公共的方法 2.<strong>子类必须调用父类的构造器，完成父类的初始化</strong> 3.创建子类对象时，默认情况会调用父类的无参构造器。 4.在子类的构造器中用super去指定构造器：<code>super(参数列表)</code> 5.super和this都只能放在构造器第一行，这两个方法不能共存在一个构造器 6.java所有类是Object的子类，object是所有类的基类 7.构造器的调用不限于直接父类，将一直追溯到Object类 8.子类最多只能继承一个父类</p>
+<h4 id="super">Super</h4>
+<p>代表父类的引用，用于访问父类的属性、方法、构造器。</p>
+<p>调用父类构造器的好处：父类属性由父类初始化，子类属性由子类初始化 子类和父类成员重名时，使用super访问父类成员 访问原则：不限于直接父类，从子类逐层向上寻找，遵守就近原则。</p>
+<h4 id="方法重写覆盖override">方法重写/覆盖（override）</h4>
+<p>子类有一个方法和父类的某个方法的名称、参数一样。 返回类型相同，或是继承关系。 子类方法不能缩小父类方法的访问权限</p>
+<h4 id="多态">多态</h4>
+<p>方法或对象具有多种形态，是面向对象的第三大特征。</p>
+<p>父类的引用可以指向子类对象。</p>
+<ol type="1">
+<li>方法的多态：重写和重载</li>
+<li>对象的多态： 一个对象的编译类型和运行类型可以不一致 编译类型在定义对象时就确定了，不能改变；运行类型是可以变化的 编译类型看等号左边，运行类型看等号右边</li>
+</ol>
+<p>细节：</p>
+<p>1.多态的前提是两个对象存在继承关系 2.向上转型：父类的引用指向子类的对象； <code>父类类型引用名 = new 子类类型();</code> 可以调用父类中的所有成员，不能调用子类的特有成员 3.向下转型： <code>子类类型 引用名 = (子类类型) 父类引用;</code> 只能强转父类的引用，不能强转父类的对象 要求父类的引用必须指向的是当前目标类型的对象 可以调用子类类型中所有的成员 4.属性的值直接看编译类型（等号左边）</p>
+<p>5.instanceof比较操作符，用于判断对象的运行类型是否为某类型或其子类型。</p>
+<h4 id="动态绑定机制">动态绑定机制</h4>
+<ol type="1">
+<li>调用方法的时候，该方法和该对象的运行类型绑定</li>
+<li>调用属性的时候，没有动态绑定，哪里声明哪里使用</li>
+</ol>
+<h4 id="多态应用">多态应用</h4>
+<ol type="1">
+<li>多态数组：数组的类型是父类类型，实际保存的元素是子类类型</li>
+<li>多态参数：形参类型为父类类型，实参类型允许为子类类型</li>
+</ol>
+<h4 id="object类详解">Object类详解</h4>
+<ol type="1">
+<li>== 可以判断基本类型，又可以判断引用类型 如果判断基本类型，判断的是值是否相等 如果判断引用类型，判断的是地址是否相等（是否为同一个对象）</li>
+<li>equals方法，只能判断引用类型 默认判断的是地址是否相等，子类中重写后会判断内容是否相等</li>
+</ol>
+<p>（p324-326）</p>
+<ol start="3" type="1">
+<li>hashcode()：返回对象的哈希码值 可以提高具有哈希结构的容器的效率</li>
+<li>两个引用，如果指向同一个对象，哈希值相同toString方法 返回字符串表示</li>
+<li>finalize 对象被回收时，自动调用，释放资源。</li>
+</ol>
+<h4 id="断点调试">断点调试</h4>
+<p>在运行状态，逐步看源码的执行过程，找到错误。</p>
+<p>快捷键： F7 跳入、F8跳过、shift+F8跳出、F9执行到下一个断点</p>
+<h3 id="java面向对象高级">Java面向对象高级</h3>
+<h4 id="静态变量类变量">静态变量（类变量）</h4>
+<p>静态变量可以被所有对象实例共享，在类加载的时候就产生了，没有创建实例也可以访问。</p>
+<p>定义：<code>访问修饰符 static 数据类型 变量名;</code></p>
+<p>访问：<code>对象名.类变量名</code>or<code>类名.类变量名</code></p>
+<p>细节： 什么时候使用类变量：某个类的所有对象共享一个变量时 静态变量与实例变量的区别：静态变量是对象共享的，实例变量是每个实例对象独享的 类变量的声明周期随着类的加载开始，随着类的消亡而销毁</p>
+<h4 id="静态方法">静态方法</h4>
+<p>定义：<code>访问修饰符 static 返回数据类型 方法名()&#123;&#125;;</code></p>
+<p>调用：<code>对象名.类方法名</code>or<code>类名.类方法名</code></p>
+<p>静态方法可以访问静态属性</p>
+<p>使用场景：当方法中不涉及任何和对象相关的成员，可以设计成静态方法 <strong>这样不创建实例也可以调用方法</strong></p>
+<p>细节： 静态方法和普通方法都是随着类的加载而加载，将结构信息存储在方法区 静态方法中不允许使用和对象有关的关键字 静态方法中只能访问静态变量或静态方法；普通方法可以访问普通and静态成员（方法）</p>
+<h4 id="理解main方法语法static">理解main方法语法static</h4>
+<ol type="1">
+<li>jvm调用main方法，权限必须是public</li>
+<li>调用时不必创建对象，所以该方法必须是static</li>
+<li>方法接受String类型的数组：在执行程序的时候传入</li>
+</ol>
+<p>注意： main方法中可以调用所在类的静态方法或静态属性，但不能直接使用非静态</p>
+<h4 id="代码块">代码块</h4>
+<p>初始化块，属于类的成员；类似于方法，但没有方法名、返回、参数，只有方法体；不用通过对象或类显示调用，而是加载时隐式调用。</p>
+<p>基本语法：<code>[static] &#123;代码&#125;;</code></p>
+<p>说明: 修饰符没有或者是static 代码块分为两类，static修饰静态、没有static修饰的是普通</p>
+<p>好处： 相当于另一种形式的构造器，可以做初始化操作 如果构造器中都有重复的语句，可以放到初始化块中 代码块的调用优先于构造器</p>
+<p>细节： 1.static代码块，对类初始化，<strong>随着类的加载执行，并且只会执行一次</strong> 2.普通代码块，在创建对象实例时，会被隐式调用，每创建一个对象就执行一次 3.<strong>类什么时候被加载</strong>：创建对象实例时；创建子类对象实例时，加载父类；使用类的静态成员时 4.创建对象时，类中的调用顺序：调用静态代码块和静态属性初始化，按顺序执行； 调用普通代码块和普通属性的初始化，按顺序执行； 调用构造方法 5.构造器的前面隐含了super()和调用普通代码块。 6.创建一个子类对象时，调用顺序：父类的静态代码块和静态属性初始化，按顺序执行； 子类的静态代码块和静态属性初始化，按顺序执行； 父类的普通代码块和普通属性初始化 父类的构造方法 子类的普通代码块和普通属性初始化 子类的构造方法 7.静态代码块只能调用静态成员，普通代码块可以调用任意成员</p>
+<h4 id="单例设计模式">单例设计模式</h4>
+<p>设计模式：优选的代码结构、编码风格</p>
+<p>单例（单个实例）：对某个类只能存在一个对象实例，只能提供一个取得其对象实例的方法</p>
+<p>步骤 <strong>饿汉式</strong>： 1.构造器私有化----&gt;防止new 2.在类的内部创建对象 3.向外暴露一个静态的公共方法getInstance</p>
+<p><strong>懒汉式</strong>： 1.构造器私有化 2.定义静态属性对象 3.提供一个public的static方法，返回Cat对象</p>
+<p>区别：创建对象的时机不同，饿汉式实在类加载就创建了对象实例，懒汉式是在使用时才创建。 饿汉式不存在线程安全问题，但懒汉式存在 饿汉式存在资源浪费的可能，懒汉式不存在 java.lang.Runtime就是经典的单例模式</p>
+<h4 id="final关键字">final关键字</h4>
+<p>可以修饰类、属性、方法和局部变量</p>
+<p>使用场景： 1.一个类不希望被继承 2.不希望父类的某个方法被子类重写 3.不希望类的某个属性值被修改 4.不希望某个局部变量被修改</p>
+<p>使用细节： 1.final修饰的属性称为常量，一般用XX_XX来命名 2.final修饰的属性，必须赋初值，并且不能再修改，初始化位置：1)定义时2)构造器中3）代码块中 3.如果final修饰的属性是静态的，初始化的位置只能是1)定义时2)静态代码块中 4.final类不能继承，但可以实例化对象 5.如果一个类是final类，则没必要将方法修饰为final方法 6.final不能修饰构造方法 7.final个static搭配使用，不会导致类加载，jvm进行了优化 8.包装类（Integer、Double、Float、Boolean、String）都是final类，不能被继承</p>
+<h4 id="抽象类">抽象类</h4>
+<p>父类的某些方法，需要声明，但不确定如何实现，可以将其声明为抽象方法。这个类就是抽象类。</p>
+<p>抽象方法：没有实现，没有方法体的方法。当一个类中存在抽象方法，需要将其声明为抽象类。</p>
+<p>定义：抽象类：<code>访问修饰符 abstract 类名&#123;&#125;</code> 抽象方法：<code>访问修饰符 abstract 返回类型 方法名(参数列表);</code></p>
+<p>抽象类的价值在于设计，需要子类继承并实现抽象类；在框架和设计模式中使用比较多</p>
+<p>细节： 1.抽象类不能实例化 2.抽象类不一定要包含抽象方法 3.一旦包含抽象方法，一定是抽象类 4.abstract只能修饰类和方法，不能修饰属性和其他 5.如果一个类继承了抽象类，则它必须实现了抽象类的所有抽象方法。（除非它自己也声明为抽象类） 6.抽象方法不能用private、final和static修饰</p>
+<h4 id="模板设计模式">模板设计模式</h4>
+<p>抽象类作为多个子类的通用模板，子类在抽象类基础上进行扩展改造，但子类总体上保留抽象类的行为模式。</p>
+<p>功能内部的一部分实现是确定的，一部分是不确定的，可以把不确定的部分暴露出去让子类实现。</p>
+<p>模板模式：编写一个抽象父类，父类提供了多个子类的通用方法，把某些方法留给子类实现。</p>
+<h4 id="接口">接口</h4>
+<p>给出一些没有实现的方法，封装在一起。到某个类要使用的时候，再根据具体情况进行实现。</p>
+<p>接口是更加抽象的抽象类，可以有静态方法、默认方法。</p>
+<p>如果一个类实现接口，需要将该接口的所有抽象方法实现。</p>
+<p>接口的优势：方便管理，形式统一，受到约束。</p>
+<p>接口细节： 1.接口不能被实例化 2.接口中所有方法是public方法，接口中抽象方法，可以不用abstract修饰 3.一个普通类实现接口，就必须将接口的所有方法都实现 4.抽象类实现接口，可以不用实现接口方法。 5.一个类同时可以实现多个接口 6.接口中的属性只能是final的，而且是public static final。访问方式：<code>接口名 属性名</code> 7.接口不能继承其他的类，但可以继承多个别的接口 8.接口的修饰符 只能是public和默认。</p>
+<p>实现接口vs继承 接口实现是对java单继承机制的补充。 当子类继承了父类，就自动拥有了父类的功能。 如果子类需要扩展功能，可以通过实现接口的方式扩展。</p>
+<p>接口和继承解决的问题不同： 继承：解决代码的复用性和可维护性 接口：设计好各种规范，让其他类去实现这些方法</p>
+<p>接口比继承更灵活： 继承是is-a的关系，接口满足like-a的关系</p>
+<p>接口在一定程度上实现代码解耦</p>
+<p>接口的多态特性：向上转型、多态数组、向下转型、多态传递现象。</p>
+<h4 id="内部类">内部类</h4>
+<p>一个类的内部又完整的嵌套了另一个类结构。被嵌套的称为内部类，嵌套其他类的类称为外部类。</p>
+<p>内部类的最大特点是可以直接访问私有属性，并且可以体现类与类的包含关系。</p>
+<p>内部类的分类： 定义在外部类的局部位置： 1）局部内部类： 本质仍是一个类，定义在外部类的局部位置，比如方法中。 不能使用除了final以外的访问修饰符修饰 作用域仅仅在定义它的代码块中 可以直接访问外部类的成员 外部类在方法中可以创建内部类对象，然后调用方法 其他外部类不能访问局部内部类 如果外部类和局部内部类的成员重名时，遵循就近原则。可以用<code>外部类名.this</code>去访问外部的成员。</p>
+<p>2）<strong>匿名内部类</strong>-没看懂 本质是类、内部类、没有名字，同时还是一个对象 使用匿名内部类可以简化开发，只能使用一次。 定义：<code>new 类或接口(参数列表) &#123;类体&#125;</code> 其他特点类似于局部内部类 可以当做一个实参直接传递，简洁高效</p>
+<p>定义在外部类的成员位置： 1）成员内部类 定义在外部类的成员位置，并且没有static修饰。 可以直接访问外部类的所有成员，包括私有成员 在外部类中可以创建内部类的对象，进行调用。 可以添加访问修饰符 外部其他类使用成员内部类的两种方式： 1-外部类对象创建一个内部类对象 2-在外部类中编写方法，返回一个内部类对象。 其他特点类似于局部内部类</p>
+<p>2）静态内部类 定义在外部类的成员位置，用static修饰。 可以直接访问外部类的所有静态成员，不能访问非静态成员 可以添加访问修饰符 作用域是整个类体 外部其他类使用成员内部类的两种方式： 1-可以通过类名直接访问 2-在外部类中编写方法，返回静态内部类对象。</p>
+<p>内部类小结： 局部内部类、匿名内部类、成员内部类、静态内部类</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Glonk
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://glonkkkkk.github.io/2023/08/28/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="Java面向对象">https://glonkkkkk.github.io/2023/08/28/Java面向对象/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/25/Java%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E6%9F%A5%E6%89%BE/" rel="prev" title="Java数组排序查找">
+      <i class="fa fa-chevron-left"></i> Java数组排序查找
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">Java面向对象基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">类与对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">成员方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6"><span class="nav-number">1.3.</span> <span class="nav-text">成员方法传参机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%8B%E9%9A%86%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.3.1.</span> <span class="nav-text">克隆对象：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-number">1.4.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="nav-number">1.5.</span> <span class="nav-text">方法重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F-%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81"><span class="nav-number">1.7.</span> <span class="nav-text">作用域-非常重要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-number">1.8.</span> <span class="nav-text">构造方法（构造器）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E7%9A%84%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90"><span class="nav-number">1.9.</span> <span class="nav-text">对象创建的流程分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.10.</span> <span class="nav-text">this关键字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%BA%A7"><span class="nav-number">2.</span> <span class="nav-text">Java面向对象中级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#idea"><span class="nav-number">2.1.</span> <span class="nav-text">IDEA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85"><span class="nav-number">2.2.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">2.3.</span> <span class="nav-text">访问修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85encaplation"><span class="nav-number">2.4.</span> <span class="nav-text">封装encaplation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">2.5.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#super"><span class="nav-number">2.6.</span> <span class="nav-text">Super</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E8%A6%86%E7%9B%96override"><span class="nav-number">2.7.</span> <span class="nav-text">方法重写&#x2F;覆盖（override）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">2.8.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6"><span class="nav-number">2.9.</span> <span class="nav-text">动态绑定机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%80%81%E5%BA%94%E7%94%A8"><span class="nav-number">2.10.</span> <span class="nav-text">多态应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#object%E7%B1%BB%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.11.</span> <span class="nav-text">Object类详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="nav-number">2.12.</span> <span class="nav-text">断点调试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">Java面向对象高级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E7%B1%BB%E5%8F%98%E9%87%8F"><span class="nav-number">3.1.</span> <span class="nav-text">静态变量（类变量）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3main%E6%96%B9%E6%B3%95%E8%AF%AD%E6%B3%95static"><span class="nav-number">3.3.</span> <span class="nav-text">理解main方法语法static</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">3.4.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.5.</span> <span class="nav-text">单例设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#final%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.6.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">3.7.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.8.</span> <span class="nav-text">模板设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.9.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">3.10.</span> <span class="nav-text">内部类</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Glonk"
+      src="/images/zzf.png">
+  <p class="site-author-name" itemprop="name">Glonk</p>
+  <div class="site-description" itemprop="description">春困秋乏</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Glonk</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
