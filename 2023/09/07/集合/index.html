@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"glonkkkkk.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="集合 理解底层机制、看源代码，集合的应用 可以动态保存任意多个对象，使用方便 一系列操作对象的方法：增删改查，add、remove、set、get">
+<meta property="og:type" content="article">
 <meta property="og:title" content="集合">
 <meta property="og:url" content="https://glonkkkkk.github.io/2023/09/07/%E9%9B%86%E5%90%88/index.html">
 <meta property="og:site_name" content="Glonkkkkk&#39; Blog">
+<meta property="og:description" content="集合 理解底层机制、看源代码，集合的应用 可以动态保存任意多个对象，使用方便 一系列操作对象的方法：增删改查，add、remove、set、get">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/zzh/Desktop/Java%20study/Java%E5%9F%BA%E7%A1%80/figs/ch14-%E9%9B%86%E5%90%88%E7%B1%BB%E5%9B%BE.png">
 <meta property="article:published_time" content="2023-09-07T09:25:33.000Z">
-<meta property="article:modified_time" content="2023-09-07T09:26:48.412Z">
+<meta property="article:modified_time" content="2023-09-26T14:23:42.790Z">
 <meta property="article:author" content="Glonk">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/zzh/Desktop/Java%20study/Java%E5%9F%BA%E7%A1%80/figs/ch14-%E9%9B%86%E5%90%88%E7%B1%BB%E5%9B%BE.png">
 
 <link rel="canonical" href="https://glonkkkkk.github.io/2023/09/07/%E9%9B%86%E5%90%88/">
 
@@ -181,9 +186,24 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-09-07 17:25:33 / 修改时间：17:26:48" itemprop="dateCreated datePublished" datetime="2023-09-07T17:25:33+08:00">2023-09-07</time>
+              <time title="创建时间：2023-09-07 17:25:33" itemprop="dateCreated datePublished" datetime="2023-09-07T17:25:33+08:00">2023-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-26 22:23:42" itemprop="dateModified" datetime="2023-09-26T22:23:42+08:00">2023-09-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study/" itemprop="url" rel="index"><span itemprop="name">Study</span></a>
+                </span>
             </span>
 
           
@@ -197,7 +217,137 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h3 id="集合">集合</h3>
+<p>理解底层机制、看源代码，集合的应用</p>
+<p>可以动态保存任意多个对象，使用方便 一系列操作对象的方法：增删改查，add、remove、set、get</p>
+<span id="more"></span>
+<figure>
+<img src="C:/Users/zzh/Desktop/Java%20study/Java基础/figs/ch14-集合类图.png" alt="ch14-集合类图" /><figcaption>ch14-集合类图</figcaption>
+</figure>
+<h4 id="集合框架体系">集合框架体系</h4>
+<p>​ 单列集合</p>
+<ul>
+<li>List
+<ul>
+<li>Vector</li>
+<li>ArrayList</li>
+<li>LinkedList</li>
+</ul></li>
+<li>Set
+<ul>
+<li>TreeSet</li>
+<li>HashSet</li>
+</ul></li>
+</ul>
+<p>Map双列集合，存放K-V</p>
+<ul>
+<li>HashMap
+<ul>
+<li>LinkedHashmap</li>
+</ul></li>
+<li>Hashtable
+<ul>
+<li>Properties</li>
+</ul></li>
+<li>TreeMap</li>
+</ul>
+<h4 id="collection">Collection</h4>
+<p>接口实现类的特点： 可以存放多个元素，每个元素可以是Object 有些实现类可以存放重复的元素，有些不可以 有些实现类是有序的，有些是无序的 Collection接口没有直接的实现子类，是通过它的子接口Set和List来实现的。</p>
+<ul>
+<li>常用方法，以ArrayList为例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line"><span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"><span class="comment">// 添加元素-&gt;转换成对象</span></span><br><span class="line">list.add(<span class="string">&quot;zzh&quot;</span>);</span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line">list.remove(Object o);<span class="comment">// 指定删除某个元素</span></span><br><span class="line">list.remove(<span class="number">0</span>);<span class="comment">// 按index删除</span></span><br><span class="line"><span class="comment">// 查找某个元素是否存在</span></span><br><span class="line">list.contains(<span class="string">&quot;zzh&quot;</span>);</span><br><span class="line"><span class="comment">// 获取元素个数</span></span><br><span class="line">list.size();</span><br><span class="line"><span class="comment">// 判断是否为空</span></span><br><span class="line">list.isEmpty();</span><br><span class="line"><span class="comment">// 清空</span></span><br><span class="line">list.clear();</span><br><span class="line"><span class="comment">// 添加多个元素</span></span><br><span class="line">list.addAll(list2);</span><br><span class="line"><span class="comment">// 查找多个元素是否都存在</span></span><br><span class="line">list.containsAll(list2);</span><br><span class="line"><span class="comment">// 删除多个元素</span></span><br><span class="line">list.removeAll(list2)</span><br></pre></td></tr></table></figure>
+<p>遍历元素方式</p>
+<ul>
+<li>使用迭代器</li>
+</ul>
+<p>Iterator是一个迭代器，主要用于遍历集合中的元素。仅用于遍历集合，本身不存放对象。</p>
+<p>tips：显示所有快捷键，CTRL+J： itit：while迭代 I:for迭代</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 得到一个集合的迭代器</span></span><br><span class="line"><span class="type">Iterator</span> <span class="variable">iterator</span> <span class="operator">=</span> coll.iterator();</span><br><span class="line"><span class="comment">// 判断是否还有下一个元素</span></span><br><span class="line">iterator.hasNext();</span><br><span class="line"><span class="comment">// 下移，返回下一个元素</span></span><br><span class="line">iterator.next();</span><br><span class="line"><span class="comment">// 使用范例：退出迭代循环后，迭代器指向最后的元素。</span></span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">    <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>增强for循环</li>
+</ul>
+<p>可以用在集合和数组上使用，底层仍是迭代器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Object o : col)</span><br></pre></td></tr></table></figure>
+<h5 id="list">List</h5>
+<p>集合类中元素有序，有对应的索引，且可重复。 常用类：Vector、ArrayList、LinkedList 常用方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"><span class="comment">// 在指定位置index插入元素obj</span></span><br><span class="line">list.add(<span class="type">int</span> index, Object obj);</span><br><span class="line"><span class="comment">// 获取指定index位置的元素</span></span><br><span class="line">list.get(Object obj);</span><br><span class="line"><span class="comment">// 返回集合中元素首次出现的位置</span></span><br><span class="line">list.indexOf(Object obj);</span><br><span class="line"><span class="comment">// 删除指定位置的元素</span></span><br><span class="line">list.remove(<span class="type">int</span> index);</span><br><span class="line"><span class="comment">// 删除指定元素</span></span><br><span class="line">list.remove(object o);</span><br><span class="line"><span class="comment">// 替换指定位置的元素</span></span><br><span class="line">list.set(<span class="type">int</span> index, Object obj);</span><br><span class="line"><span class="comment">// 返回子集合</span></span><br><span class="line">list.subList(<span class="type">int</span> fromIndex, <span class="type">int</span> toIndex);</span><br></pre></td></tr></table></figure>
+<p>三种遍历方式： 使用iterator、使用增强for、使用普通for（视作数组）</p>
+<ul>
+<li>ArrayList</li>
+</ul>
+<p>注意事项： 可以加入空元素，是由数组实现数据存储的。 基本等同于Vector，但ArrayList执行效率高、线程不安全</p>
+<p>源码分析： 底层维护Object数组elementData。 创建对象时如果使用无参构造器，则初始容量为0；第一次添加时，扩容为10；再次扩容为1.5倍 如果使用指定大小的构造器，则初始容量确定；再次扩容为1.5倍</p>
+<ul>
+<li>Vector</li>
+</ul>
+<p>底层也是一个对象数组。 线程安全，支持线程同步和互斥。</p>
+<p>扩容机制源码分析： 创建对象时如果使用无参构造器，则初始容量为10；再次扩容为2倍 如果使用指定大小的构造器，则初始容量确定；再次扩容为2倍</p>
+<ul>
+<li>LinkedList</li>
+</ul>
+<p>底层实现了<strong>双向链表</strong>和双端队列，可以添加任何元素（可重复、可空），线程不安全、没有同步机制 LinkedList维护了first、last，分别指向首节点和尾节点。 每个节点维护prev、next、item单个属性，通过prev指向前一个，next指向后一个节点。</p>
+<ul>
+<li>list的选择： 查改较多，选择ArrayList 增删较多，选择LinkedList</li>
+</ul>
+<h5 id="set">Set</h5>
+<p>基于HashMap实现，集合类中元素无序、没有索引，不允许重复的元素，最多包含一个null。 常用类：HashSet、TreeSet 常用方法：和Collection接口相同。 遍历方式：迭代器、增强for</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line"><span class="type">Set</span> <span class="variable">set</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>();</span><br><span class="line"><span class="comment">// 增加元素</span></span><br><span class="line">set.add(<span class="string">&quot;john&quot;</span>);</span><br><span class="line">set.add(<span class="string">&quot;lucy&quot;</span>);</span><br><span class="line"><span class="comment">// 遍历</span></span><br><span class="line"><span class="type">Iterator</span> <span class="variable">iterator</span> <span class="operator">=</span> set.iterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">    <span class="type">Object</span> <span class="variable">object</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(Object o : set)&#123;</span><br><span class="line">    sout(o);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>HashSet</li>
+</ul>
+<p>实现了Set接口，底层实际上是HashMap（数组+链表+红黑树），存储效率高。</p>
+<p>元素添加的逻辑： 1.先得到元素的hash值，转换成索引值 2.在存储表的索引位置，看这个位置是否有已经存放的元素 3.如果没有，元素直接加入存储表；如果有，则进行<strong>hash值和equals</strong>比较，不相同则添加到最后；都相同则不添加。 4.当链表元素超过8，table元素超过64时，则自动进行树化；否则仍采用数组扩容机制</p>
+<p>源码解读： 1.首先生成HashMap(); 2.执行add() 3.执行put，方法会执行hash(key)得到key对应的hash值 4.</p>
+<p>扩容机制： 1.第一次添加时，数组扩容到16，到达临界值16*0.75时，扩容为16x2；以此类推 2.达到树化条件的时候进行树化。</p>
+<ul>
+<li>LinkedHashSet</li>
+</ul>
+<p>是HashSet的子类，底层是LinkedHashMap，维护一个数组+双向链表 根据元素的hashCode值来决定元素的存储位置，同时用链表维护元素的次序，保证存取的有序。</p>
+<p>元素添加的逻辑： 1. 添加元素：先求hash值，再求索引确定元素在table中的位置，然后将添加的元素加入到双向链表 2. 可以保证插入的顺序和遍历顺序一致。</p>
+<ul>
+<li>TreeSet</li>
+</ul>
+<p>默认是无序的；可以通过调用有参构造器，传入比较器（匿名内部类）来指定排序规则。</p>
+<h4 id="map">Map</h4>
+<p>双列元素，用于保存具有映射关系的数据key-value key和value是任何引用类型的数据，会封装到HashMap$Node对象中 key不可以重复，value可以重复；出现相同的key会发生替换 常用String类作为key，key-value之间存在单向一对一关系，通过指定的key找到对应的value</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line"><span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line"><span class="comment">// 增加元素</span></span><br><span class="line">map.put(<span class="string">&quot;key1&quot;</span>,<span class="string">&quot;value1&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;key2&quot;</span>,<span class="string">&quot;value2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="hashmap">HashMap</h5>
+<ul>
+<li>常用方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line"><span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line"><span class="comment">// 添加元素</span></span><br><span class="line">map.put(<span class="string">&quot;zzh&quot;</span>,<span class="number">18</span>);</span><br><span class="line">map.put(<span class="string">&quot;jcc&quot;</span>,<span class="number">18</span>);</span><br><span class="line">map.put(<span class="string">&quot;jcc&quot;</span>,<span class="number">19</span>);</span><br><span class="line">System.out.println(map);</span><br><span class="line"><span class="comment">// 根据键删除映射关系</span></span><br><span class="line">map.remove(<span class="string">&quot;zzh&quot;</span>);</span><br><span class="line"><span class="comment">// 根据键获取值</span></span><br><span class="line">map.get(<span class="string">&quot;jcc&quot;</span>);</span><br><span class="line"><span class="comment">// 获取元素个数</span></span><br><span class="line">map.size();</span><br><span class="line"><span class="comment">// 判断个数是否为0</span></span><br><span class="line">map.isEmpty();</span><br><span class="line"><span class="comment">// 清除k-v</span></span><br><span class="line">map.clear();</span><br><span class="line"><span class="comment">// 查找键是否存在</span></span><br><span class="line">map.containsKey(<span class="string">&quot;jc&quot;</span>);</span><br><span class="line"><span class="comment">// 把所有的values取出</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>遍历方式</li>
+</ul>
+<ol type="1">
+<li>containsKey：查找键是否存在</li>
+<li>keySet：获取所有的键</li>
+<li>entrySet：获取所有关系的k-v</li>
+<li>values：获取所有的值</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.先取出所有的key，通过key取出对应的value</span></span><br><span class="line"><span class="type">Set</span> <span class="variable">keyset</span> <span class="operator">=</span> map.keySet();</span><br><span class="line"><span class="comment">// (1)增强for</span></span><br><span class="line"><span class="keyword">for</span>(Object key: keyset)&#123;</span><br><span class="line">    map.get(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// (2)迭代器iterator</span></span><br><span class="line"><span class="type">iterator</span> <span class="variable">iterator</span> <span class="operator">=</span> keyset.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    <span class="type">Object</span> <span class="variable">key</span> <span class="operator">=</span>  iterator.next();</span><br><span class="line">    map.get(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2.把所有的values取出后遍历</span></span><br><span class="line"><span class="comment">// (1)增强for (2)迭代器iterator</span></span><br><span class="line"><span class="type">Collection</span> <span class="variable">values</span> <span class="operator">=</span> map.values();</span><br><span class="line"><span class="keyword">for</span>(Object o : values)&#123;</span><br><span class="line">    System.out.println(o);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 3.通过EntrySet，来取出k-v</span></span><br><span class="line"><span class="comment">// (1)增强for (2)迭代器iterator</span></span><br><span class="line"><span class="type">Set</span> <span class="variable">entrySet</span> <span class="operator">=</span> map.entrySet();</span><br><span class="line"><span class="keyword">for</span>(Object entry : entrySet)&#123;</span><br><span class="line">    <span class="comment">// entry向下转型</span></span><br><span class="line">    Map.<span class="type">Entry</span> <span class="variable">m</span> <span class="operator">=</span> (Map.Entry) entry;</span><br><span class="line">    m.getKey();</span><br><span class="line">    m.getValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不保证映射的顺序，底层是以hash表的方式存储。没有实现同步，线程不安全。</p>
+<ul>
+<li><p>元素添加的逻辑： 1.先得到key元素的hash值，转换成索引值 2.在存储表的索引位置，看这个位置是否有已经存放的元素 3.如果没有，元素直接加入存储表；如果有，则对key值进行<strong>hash值和equals</strong>比较，不相同则添加到最后；都相同则替换value值。 4.当链表元素超过8，table元素超过64时，则自动进行树化；否则仍采用数组扩容机制</p></li>
+<li><p>扩容机制：和HashSet完全一致 1.第一次添加时，数组扩容到16，到达临界值16*0.75时，扩容为16x2；以此类推 2.达到树化条件的时候进行树化。</p></li>
+</ul>
+<h5 id="hashtable">HashTable</h5>
+<p>存放K-V键值对，键和值都不能为空。 使用方法基本和HashMap一样，但sync线程安全、效率低。 根据扩容机制进行扩容：初始大小为11，临界值为8，按照2n+1进行扩容。</p>
+<h5 id="properties">Properties</h5>
+<p>继承自HashTable，并且实现了Map接口,也是使用键值对存放数据。 使用特点和HashTable类似。 可以用于从.properties文件中加载数据到Properties类对象。</p>
+<h5 id="treemap">TreeMap</h5>
+<p>默认是无序的；可以通过调用有参构造器，传入比较器（匿名内部类）来指定K的排序规则。</p>
+<h4 id="如何选择集合实现类">如何选择集合实现类</h4>
+<p>主要取决于业务操作特点，然后根据集合实现类特性进行选择。</p>
+<ol type="1">
+<li>先判断存储类型（单列 or 键值对）</li>
+<li>一组对象：Collection接口 允许重复：List 增删多：LinkedList、改查多：ArrayList 不允许重复：Set 无序：HashSet、排序：TreeSet、插入和取出顺序一致：LinkedHashSet</li>
+<li>一组键值对：Map 键无序：HashMap、键排序：TreeMap、插入和取出顺序一致：LinkedHashMap 读取文件：Properties</li>
+</ol>
+<h4 id="collections工具类">Collections工具类</h4>
+<p>是一个操作Set、List和Map等集合的工具类，可以对集合元素进行排序、查询和修改。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建ArrayList 集合，用于测试.</span></span><br><span class="line"><span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">list.add(<span class="string">&quot;tom&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;smith&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;king&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 反转字符串</span></span><br><span class="line">Collections.reverse(list);</span><br><span class="line"><span class="comment">// 自然排序</span></span><br><span class="line">Collections.sort(list);</span><br><span class="line"><span class="comment">// 交换指定位置</span></span><br><span class="line">Collections.swap(List, i, j);</span><br><span class="line"><span class="comment">// 根据元素的自然顺序，返回给定集合中的最大元素</span></span><br><span class="line">Collections.max(list)    </span><br><span class="line"><span class="comment">// 指定顺序排序，使用匿名内部类加入比较器</span></span><br><span class="line"><span class="comment">// 指定集合中指定元素的出现次数 </span></span><br><span class="line">Collections.frequency(list, <span class="string">&quot;tom&quot;</span>));</span><br><span class="line"><span class="comment">// 拷贝 将list中的内容复制到dest中，需要将dest大小扩充到和list一致</span></span><br><span class="line">Collections.copy(dest, list);</span><br><span class="line"><span class="comment">// 将list中的oldVal替换为newVal</span></span><br><span class="line">Collections.replaceAll(list, oldval, newVal);</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -223,6 +373,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
         
 
@@ -233,7 +386,10 @@
     <a href="/2023/09/07/%E5%B8%B8%E7%94%A8%E7%B1%BB/" rel="prev" title="常用类">
       <i class="fa fa-chevron-left"></i> 常用类
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/09/26/%E6%B3%9B%E5%9E%8B/" rel="next" title="泛型">
+      泛型 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -292,6 +448,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">1.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E4%BD%93%E7%B3%BB"><span class="nav-number">1.1.</span> <span class="nav-text">集合框架体系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#collection"><span class="nav-number">1.2.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#list"><span class="nav-number">1.2.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#set"><span class="nav-number">1.2.2.</span> <span class="nav-text">Set</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">1.3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#hashmap"><span class="nav-number">1.3.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hashtable"><span class="nav-number">1.3.2.</span> <span class="nav-text">HashTable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#properties"><span class="nav-number">1.3.3.</span> <span class="nav-text">Properties</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#treemap"><span class="nav-number">1.3.4.</span> <span class="nav-text">TreeMap</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E9%9B%86%E5%90%88%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">如何选择集合实现类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#collections%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="nav-number">1.5.</span> <span class="nav-text">Collections工具类</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -306,7 +463,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
